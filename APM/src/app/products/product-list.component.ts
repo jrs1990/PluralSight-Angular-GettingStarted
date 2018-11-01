@@ -27,6 +27,9 @@ export class ProductListComponent implements OnInit {
       this.filteredProducts = this.listFilter ? this.peformFilter(this.listFilter) : this.products; 
     }
 
+    onRatingClicked(messge: string) : void{
+      this.pageTitle = 'Product List: ' + messge;
+    }
 
     
     filteredProducts: IProduct[];
