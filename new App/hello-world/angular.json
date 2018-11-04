@@ -3,25 +3,24 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "APM": {
+    "hello-world": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "pm",
+      "prefix": "app",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/APM",
+            "outputPath": "dist/hello-world",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/api"
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -44,25 +43,32 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "APM:build"
+            "browserTarget": "hello-world:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "APM:build:production"
+              "browserTarget": "hello-world:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "APM:build"
+            "browserTarget": "hello-world:build"
           }
         },
         "test": {
@@ -96,19 +102,20 @@
         }
       }
     },
-    "APM-e2e": {
+    "hello-world-e2e": {
       "root": "e2e/",
       "projectType": "application",
+      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "APM:serve"
+            "devServerTarget": "hello-world:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "APM:serve:production"
+              "devServerTarget": "hello-world:serve:production"
             }
           }
         },
@@ -124,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "APM"
+  "defaultProject": "hello-world"
 }
